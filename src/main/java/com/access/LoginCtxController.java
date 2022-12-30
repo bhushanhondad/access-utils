@@ -20,4 +20,10 @@ public class LoginCtxController {
             return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping ("/test")
+    @ResponseStatus(HttpStatus.CREATED)
+    String test() {
+        return "working ok";
+        }
 }
