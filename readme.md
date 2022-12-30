@@ -12,19 +12,19 @@ For explanation, please visit this article - [Docker and Spring Boot](https://mk
 
 ## How to run this?
 ```bash
-$ git clone https://github.com/mkyong/docker-java
-$ cd docker-spring-boot
+$ git clone git@github.com:bhushanhondad/access-utils.git
+$ cd access-utils
 $ mvn clean package
-$ java -jar target/spring-boot-web.jar
+$ java -jar target/access-utils
 
-  access http://localhost:8080
+access http://localhost:8080/test
 
 //dockerize
 
 // create a docker image
-$ sudo docker build -t spring-boot:1.0 .
+$ sudo docker build -t access-utils:1.0 .
 // run it
-$ sudo docker run -d -p 8080:8080 -t spring-boot:1.0
+$ sudo docker run -d -p 8080:8080 -t access-utils:1.0
 
-  access http://localhost:8080
+access http://localhost:8080/test
 ```
