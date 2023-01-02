@@ -9,11 +9,25 @@ import org.springframework.web.bind.annotation.*;
 public class LoginCtxController {
     @PostMapping("/loginCtxDecoder")
     @ResponseStatus(HttpStatus.CREATED)
-    ResponseEntity newBook(@RequestBody LoginCtxPayload certificateChainPayload) {
-        String tenantName = certificateChainPayload.getTenantName();
-        String loginCtx = certificateChainPayload.getLoginCtx();
+    ResponseEntity loginCtxDecoder(@RequestBody AccessCtxPayload accessCtxPayload) {
+        String tenantName = accessCtxPayload.getTenantName();
+        String loginCtx = accessCtxPayload.getLoginCtx();
         try {
             String decodedLoginCtx = AccessUtils.loginCtxDecrypt(tenantName, loginCtx);
+            return new ResponseEntity(decodedLoginCtx, HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/errorCtxDecoder")
+    @ResponseStatus(HttpStatus.CREATED)
+    ResponseEntity errorCtxDecoder(@RequestBody AccessCtxPayload accessCtxPayload) {
+        String tenantName = accessCtxPayload.getTenantName();
+        String errorCtx = accessCtxPayload.getErrorCtx();
+        try {
+            String decodedLoginCtx = AccessUtils.errorCtxDecrypt(tenantName, errorCtx);
             return new ResponseEntity(decodedLoginCtx, HttpStatus.OK);
         }
         catch (Exception e){

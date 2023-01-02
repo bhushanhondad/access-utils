@@ -4,18 +4,21 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class LoginCtxPayload {
+public class AccessCtxPayload {
 
     private String tenantName;
     private String loginCtx;
+
+    private String errorCtx;
+
     private Long id;
 
 
     // avoid this "No default constructor for entity"
-    public LoginCtxPayload() {
+    public AccessCtxPayload() {
     }
 
-    public LoginCtxPayload(String loginCtx) {
+    public AccessCtxPayload(String loginCtx) {
         this.loginCtx = loginCtx;
     }
 
@@ -35,12 +38,12 @@ public class LoginCtxPayload {
         this.loginCtx = loginCtx;
     }
 
-    @Override
-    public String toString() {
-        return "LoginCtxPayload{" +
-                "loginCtx='" + loginCtx + '\'' +
-                ", id=" + id +
-                '}';
+    public String getErrorCtx() {
+        return errorCtx;
+    }
+
+    public void setErrorCtx(String errorCtx) {
+        this.errorCtx = errorCtx;
     }
 
     public void setId(Long id) {
@@ -50,5 +53,15 @@ public class LoginCtxPayload {
     @Id
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "AccessCtxPayload{" +
+                "tenantName='" + tenantName + '\'' +
+                ", loginCtx='" + loginCtx + '\'' +
+                ", errorCtx='" + errorCtx + '\'' +
+                ", id=" + id +
+                '}';
     }
 }
