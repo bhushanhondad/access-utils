@@ -15,7 +15,7 @@ For explanation, please visit this article - [Docker and Spring Boot](https://mk
 $ git clone git@github.com:bhushanhondad/access-utils.git
 $ cd access-utils
 $ mvn clean package
-$ java -jar target/access-utils
+$ java -jar target/access-utils-1.0.jar
 
 access http://localhost:8080/test
 
